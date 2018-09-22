@@ -49,9 +49,9 @@ for (i in items) {
 sp = getPrice(i, items[i])
 newprice = Math.round(sp*items[i]*100)/100
 bon += "<tr><td>"+items[i]+"x </td><td>"+i+" ("+sp+"/stuk): </td><td>"+newprice+"</td></tr>"
-price = Math.round((price+newprice)*10)/10
+price = price+newprice
 }
-document.getElementById("list").innerHTML = "<table>"+bon+"<tr><td>Totaal: </td><td></td><td>"+price+"</td></table>"
+document.getElementById("list").innerHTML = "<table>"+bon+"<tr><td>Totaal: </td><td></td><td>"+(Math.round(price*10)/10)+"</td></table>"
 }
 
 function endPurchase() {
@@ -71,7 +71,7 @@ var pp = pricePoint[item]
 if (amount > pp) {
 var p2 = 2*p/5
 var p1 = p-p2
-return Math.round((p1+p2*Math.pow(0.75, Math.log2(amount/pp)))*100)/100
+return Math.round((p1+p2*Math.pow(0.75, Math.log2(amount/pp)))*1000)/1000
 } else {
 return p
 }
