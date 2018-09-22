@@ -4,8 +4,8 @@
 </head>
 <body>
 <table>
-<tr><td><img src="spruce.png" width="32" height="32" title="Spruce log" onclick="addItem('spruce', prompt('amount'))" onmouseover="showPrice('spruce')" onmouseout="showPrice('')"></td><td><img src="purpur.png" width="32" height="32" title="Purpur block" onclick="addItem('purpur', prompt('amount'))" onmouseover="showPrice('purpur')" onmouseout="showPrice('')"></td></tr>
-<tr><td><img src="jungle.png" width="32" height="32" title="Jungle log" onclick="addItem('jungle', prompt('amount'))" onmouseover="showPrice('jungle')" onmouseout="showPrice('')"></td><td><img src="end_rod.png" width="32" height="32" title="End rod" onclick="addItem('end_rod', prompt('amount'))" onmouseover="showPrice('end_rod')" onmouseout="showPrice('')"></td></tr>
+<tr><td><img src="spruce.png" width="32" height="32" title="Spruce log" onclick="itemClick('spruce')" onmouseover="showPrice('spruce')" onmouseout="showPrice('')"></td><td><img src="purpur.png" width="32" height="32" title="Purpur block" onclick="itemClick('purpur')" onmouseover="showPrice('purpur')" onmouseout="showPrice('')"></td></tr>
+<tr><td><img src="jungle.png" width="32" height="32" title="Jungle log" onclick="itemClick('jungle')" onmouseover="showPrice('jungle')" onmouseout="showPrice('')"></td><td><img src="end_rod.png" width="32" height="32" title="End rod" onclick="itemClick('end_rod')" onmouseover="showPrice('end_rod')" onmouseout="showPrice('')"></td></tr>
 </table>
 <p id="priceCorner" style="position: fixed;right:50px"></p>
 <p id="list"></p>
@@ -21,8 +21,20 @@ document.getElementById("priceCorner").innerHTML = ""
 }
 
 var items = {};
+
+function itemClick(item) {
+var amount = prompt("Hoeveelheid "+item+":", items[item])
+if (amount != null) {
+amount = Number(amount)
+addItem(item, amount)
+}
+}
+
 function addItem(item, amount) {
 items[item] = amount
+if (amount == 0) {
+delete items[item]
+}
 checkOut()
 return amount+" "+item
 }
