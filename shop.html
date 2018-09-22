@@ -39,9 +39,10 @@ checkOut()
 return amount+" "+item
 }
 
+var price;
 function checkOut() {
 var bon = "";
-var price = 0
+price = 0
 var sp = 0;
 var newprice = 0;
 var i;
@@ -62,7 +63,7 @@ for (i in items) {
 purchase += i+"="+items[i]+"&"
 j++
 }
-alert("Doe /msg Reviiii http://localhost/minecraft/checkout?"+purchase.slice(0,-1))
+document.body.innerText = "WAARCHUWING: Dit werkt alleen als Reviiii online is!\n\nStap 1: Doe /msg Reviiii http://localhost/minecraft/checkout?"+purchase.slice(0,-1)+"\nStap2: Doe /pay Reviiii "+(Math.round(price*10)/10)+"\nStap3: Wacht tot er een teleportatieverzoek binnenkomt\nStap4: Doe /tpaccept\nStap 5: Pak je items op"
 }
 
 function getPrice(item, amount) {
