@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Reviiii's shop</title>
+</head>
+<body>
+<table>
+<tr><td><img src="spruce.png" width="32" height="32" title="pruce log" onclick="addItem('spruce', prompt('amount'))" onmouseover="showPrice('spruce')" onmouseout="showPrice('')"></td><td><img src="purpur.png" width="32" height="32" title="purpur block" onclick="addItem('purpur', prompt('amount'))" onmouseover="showPrice('purpur')" onmouseout="showPrice('')"></td></tr>
+<tr><td><img src="jungle.png" width="32" height="32" title="Jungle log" onclick="addItem('jungle', prompt('amount'))" onmouseover="showPrice('jungle')" onmouseout="showPrice('')"></td><td><img src="end_rod.png" width="32" height="32" title="End rod" onclick="addItem('end_rod', prompt('amount'))" onmouseover="showPrice('end_rod')" onmouseout="showPrice('')"></td></tr>
+</table>
+<p id="priceCorner" style="position: fixed;right:50px"></p>
+<p id="list"></p>
+<button onclick="endPurchase()">Volgende</button>
+<script src="prices.js"></script>
+<script>
+function showPrice(item) {
+if (item != "") {
+document.getElementById("priceCorner").innerHTML = "Prijs/stuk:"+(prices[item]*3/5)+"-"+prices[item]+"<br>Punt:"+pricePoint[item]
+} else {
+document.getElementById("priceCorner").innerHTML = ""
+}
+}
+
+var items = {};
+function addItem(item, amount) {
+items[item] = amount
+checkOut()
+return amount+" "+item
+}
+
+function checkOut() {
+var bon = "";
+var price = 0
+var sp = 0;
+var newprice = 0;
+var i;
+for (i in items) {
+sp = getPrice(i, items[i])
+newprice = Math.round(sp*items[i]*100)/100
+bon += "<tr><td>"+items[i]+"x </td><td>"+i+" ("+sp+"/stuk): </td><td>"+newprice+"</td></tr>"
+price = Math.round((price+newprice)*10)/10
+}
+document.getElementById("list").innerHTML = "<table>"+bon+"<tr><td>Totaal: </td><td></td><td>"+price+"</td></table>"
+}
+
+function endPurchase() {
+var purchase = ""
+var i;
+var j = 1;
+for (i in items) {
+purchase += i+"="+items[i]+"&"
+j++
+}
+alert("Doe /msg Reviiii http://localhost/minecraft/checkout?"+purchase.slice(0,-1))
+}
+
+function getPrice(item, amount) {
+var p = prices[item]
+var pp = pricePoint[item]
+if (amount > pp) {
+var p2 = 2*p/5
+var p1 = p-p2
+return Math.round((p1+p2*Math.pow(0.75, Math.log2(amount/pp)))*100)/100
+} else {
+return p
+}
+}
+</script>
+</body>
+</html>
