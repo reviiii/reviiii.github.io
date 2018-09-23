@@ -52,7 +52,7 @@ newprice = Math.round(sp*items[i]*100)/100
 bon += "<tr><td>"+items[i]+"x </td><td>"+i+" ("+sp+"/stuk): </td><td>"+newprice+"</td></tr>"
 price = price+newprice
 }
-document.getElementById("list").innerHTML = "<table>"+bon+"<tr><td>Totaal: </td><td></td><td>"+(Math.round(price*10)/10)+"</td></table>"
+document.getElementById("list").innerHTML = "<table>"+bon+"<tr><td>Totaal: </td><td></td><td>"+(Math.round(price*100)/100)+"</td></table>"
 }
 
 function endPurchase() {
