@@ -14,7 +14,7 @@
 <script>
 function showPrice(item) {
 if (item != "") {
-document.getElementById("priceCorner").innerHTML = "Prijs/stuk:"+(prices[item]*3/5)+"-"+prices[item]+"<br>Punt:"+pricePoint[item]
+document.getElementById("priceCorner").innerHTML = "Prijs/stuk:"+(prices[item]*3/5)+"-"+prices[item]+"<br>Punt:"+pricePoint[item]+"<br>Voorraad:"+storage[item]
 } else {
 document.getElementById("priceCorner").innerHTML = ""
 }
