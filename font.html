@@ -1,0 +1,15 @@
+<html>
+<body>
+<script>
+function toLelijk(str) {
+    var mooi =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","?"];
+    var lelijk = ["\uff21","\uff22","\uff23","\uff24","\uff25","\uff26","\uff27","\uff28","\uff29","\uff2a","\uff2b","\uff2c","\uff2d","\uff2e","\uff2f","\uff30","\uff31","\uff32","\uff33","\uff34","\uff35","\uff36","\uff37","\uff38","\uff39","\uff3a","\uff41","\uff42","\uff43","\uff44","\uff45","\uff46","\uff47","\uff48","\uff49","\uff4a","\uff4b","\uff4c","\uff4d","\uff4e","\uff4f","\uff50","\uff51","\uff52","\uff53","\uff54","\uff55","\uff56","\uff57","\uff58","\uff59","\uff5a","\uff1f"];
+    for (var i=0;i<mooi.length;i++) {
+        str = str.split(mooi[i]).join(lelijk[i]); // vervang mooie tekens door lelijke
+    }
+    return str;
+}
+alert(toLelijk(prompt()))
+</script>
+</body>
+</html>
