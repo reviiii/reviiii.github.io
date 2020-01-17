@@ -2,6 +2,7 @@
 <head>
 <title>mc.revi.gq</title>
 <style>
+
 body {
   background-color: #ffc403;
 }
@@ -11,16 +12,17 @@ body {
   justify-content: center;
 }
 .item {
-  width: 80vw;
+  width: 90vw;
   height: 200px;
   font-size: 100px;
   line-height: 100px;
   text-align: center;
   position: relative;
   top: 0;
-  left: 10vw;
-  background-color:#3ff33f;
-  color:#0000c0;
+  left: 5vw;
+  background-color: #3ff33f;
+  color: #0000c0;
+  margin: 8px 0;
 }
 a {
   text-decoration: none;
@@ -30,7 +32,17 @@ a {
 <body>
 <div class="main">
   <a href="https://github.com/reviiii/scripts/raw/master/TPSCounter.user.js"><div class="main item">TPSCounter</div></a>
-  <a href="font"><div class="main item">Lelijk lettertype</div></a>
+  <a href="javascript:alert(toLelijk(prompt('Tekst')))"><div class="main item">Lelijk lettertype</div></a>
 </div>
+<script>
+function toLelijk(str) {
+    var mooi =   ["!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~","«","»"];
+    var lelijk = ["！","＂","＃","＄","％","＆","＇","（","）","＊","＋","，","－","．","／","０","１","２","３","４","５","６","７","８","９","：","；","＜","＝","＞","？","＠","Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ","Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ","Ｓ","Ｔ","Ｕ","Ｖ","Ｗ","Ｘ","Ｙ","Ｚ","［","＼","］","＾","＿","｀","ａ","ｂ","ｃ","ｄ","ｅ","ｆ","ｇ","ｈ","ｉ","ｊ","ｋ","ｌ","ｍ","ｎ","ｏ","ｐ","ｑ","ｒ","ｓ","ｔ","ｕ","ｖ","ｗ","ｘ","ｙ","ｚ","｛","｜","｝","～","｟","｠"];
+    for (var i=0;i<mooi.length;i++) {
+        str = str.split(mooi[i]).join(lelijk[i]); // vervang mooie tekens door lelijke
+    }
+    return str;
+}
+</script>
 </body>
 </html>
