@@ -7,7 +7,7 @@ body {
   background-color: #fff;
   font-family: Arial, sans-serif;
 }
-.main {
+nav.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
