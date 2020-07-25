@@ -3,6 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>mc.revi.gq</title>
 <style>
+@media (max-width: 40em) {
+    html {
+        font-size: 2.5vw;
+    }
+}
 body {
   background-color: #fff;
   font-family: Arial, sans-serif;
@@ -16,12 +21,15 @@ body {
 .item {
   width: 90vw;
   height: 12rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
   font-size: 6rem;
   line-height: 6rem;
-  text-align: center;
   background-color: #abc;
   color: #000;
   margin: 8px 0;
+  border: none;
 }
 a {
   text-decoration: none;
@@ -31,9 +39,9 @@ a {
 </head>
 <body>
 <div class="main">
-  <a class="main item" title="Hiervoor heb je Tampermonkey nodig" href="https://github.com/reviiii/scripts/raw/master/TPSCounter.user.js">TPSCounter</a>
-  <a class="main item" onclick="alert(toLelijk(prompt('Tekst')))">Lelijk lettertype</a>
-  <a class="main item" href="https://pastebin.com/embed_iframe/Dkf9Bke2">Ocean monuments</a>
+  <a class="item" title="Hiervoor heb je Tampermonkey nodig" href="https://github.com/reviiii/scripts/raw/master/TPSCounter.user.js">TPSCounter</a>
+  <button class="item" onclick="alert(toLelijk(prompt('Tekst')))">Lelijk lettertype</a>
+  <a class="item" href="https://pastebin.com/embed_iframe/Dkf9Bke2">Ocean monuments</a>
 </div>
 <script>
 function toLelijk(str) {
