@@ -27,13 +27,13 @@ nav.main {
   color: #000;
   margin: 0.1em 0;
 }
+.item:hover {
+    background-color: #bbb;
+}
 .item:focus {
     background-color: #cba;
     outline: 2px solid black;
     outline-offset: 0;
-}
-.item:hover {
-    background-color: #bbb;
 }
 a.item {
   text-decoration: none;
