@@ -16,7 +16,7 @@ nav.main {
 }
 .item {
   width: 90vw;
-  height: 12rem;
+  min-height: 12rem;
   display: flex;
   align-items: center;
   justify-content: center;
