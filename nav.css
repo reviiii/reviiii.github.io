@@ -6,6 +6,7 @@
 body {
   background-color: #fff;
   font-family: Arial, sans-serif;
+  margin: 0;
 }
 nav.main {
   display: flex;
