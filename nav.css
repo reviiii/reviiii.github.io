@@ -1,0 +1,46 @@
+@media (max-width: 40em) {
+    html {
+        font-size: 2.5vw;
+    }
+}
+body {
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item {
+  width: 90vw;
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 6rem;
+  line-height: 6rem;
+  background-color: #abc;
+  color: #000;
+  margin: 0.1em 0;
+}
+.item:focus {
+    background-color: #cba;
+    outline: 2px solid black;
+    outline-offset: 0;
+}
+.item:hover {
+    background-color: #bbb;
+}
+a.item {
+  text-decoration: none;
+  cursor: pointer;
+}
+button.item {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
