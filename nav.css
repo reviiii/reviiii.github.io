@@ -26,6 +26,7 @@ nav.main {
   background-color: #abc;
   color: #000;
   margin: 0.1em 0;
+  transition: background-color 0.1s ease-in-out 0s;
 }
 .item:hover {
     background-color: #bbb;
