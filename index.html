@@ -44,7 +44,7 @@ function parseColor(color) {
 function createGradient(str, startColor, endColor, modifier) {
     str=str.split("");
     var l = str.length;
-    if (startColor.a!==255||endColor.a!==255) throw new Error("Transparent colors are not supported")
+    if (startColor.a<255||endColor.a<255) throw new Error("Transparent colors are not supported")
     var r1 = startColor.r, g1 = startColor.g, b1 = startColor.b;
     var r2 = endColor.r, g2 = endColor.g, b2 = endColor.b;
     var out=""
@@ -60,14 +60,20 @@ function promptCreateGradient() {
     try {
         var str = prompt('Tekst');
         if (str===null) return;
+        
         var startColor = prompt('Beginkleur', '#00FFFF');
         if (startColor===null) return;
         startColor = parseColor(startColor);
+        if (startColor.a<255) throw new Error("Transparent colors are not supported")
+        
         var endColor = prompt('Eindkleur', 'blue');
         if (endColor===null) return;
         endColor = parseColor(endColor);
+        if (endColor.a<255) throw new Error("Transparent colors are not supported")
+        
         var modifier = prompt('Format codes', '&l');
         if (modifier===null) return;
+        
         alert("/rename "+createGradient(str, startColor, endColor, modifier));
     } catch(e) {
         alert("Error: "+e.message);
