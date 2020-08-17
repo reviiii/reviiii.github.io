@@ -59,12 +59,12 @@ function promptCreateGradient() {
         var startColor = prompt('Beginkleur', '#00FFFF');
         if (startColor===null) return;
         startColor = parseColor(startColor);
-        if (startColor.a<255) throw new Error("Transparent colors are not supported")
+        if (startColor.a<1) throw new Error("Transparent colors are not supported")
         
         var endColor = prompt('Eindkleur', 'blue');
         if (endColor===null) return;
         endColor = parseColor(endColor);
-        if (endColor.a<255) throw new Error("Transparent colors are not supported")
+        if (endColor.a<1) throw new Error("Transparent colors are not supported")
         
         var modifier = prompt('Format codes', '&l');
         if (modifier===null) return;
