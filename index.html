@@ -21,24 +21,29 @@ function toLelijk(str) {
     }
     return str;
 }
-var parseColor = (function() {
-    var c = document.createElement("canvas");
-    var ctx = c.getContext("2d");
-    c.width = 1;
-    c.height = 1;
-    return function(color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(0,0,1,1);
-        var imgData = ctx.getImageData(0,0,1,1);
-        var d = imgData.data
-        return {r: d[0], g: d[1], b: d[2], a: d[3]}
+function parseColor(color) {
+    var div = document.createElement('div');
+    div.style.color = color;
+    document.body.appendChild(div);
+    var match = getComputedStyle(div).color.split("(")[1].split(")")[0].split(",").map(Number)
+    div.remove();
+    if (match.length>2) {
+        if (match.length<4) match[3] = 255;
+        var parsedColor = {
+          r: match[0],
+          g: match[1],
+          b: match[2],
+          a: match[3]
+        };
+        return parsedColor;
+    } else {
+        throw new Error(`Color ${color} could not be parsed.`);
     }
-})()
+}
 function createGradient(str, startColor, endColor, modifier) {
     str=str.split("");
     var l = str.length;
-    startColor = parseColor(startColor);
-    endColor = parseColor(endColor);
+    if (startColor.a!==255||endColor.a!==255) throw new Error("Transparent colors are not supported")
     var r1 = startColor.r, g1 = startColor.g, b1 = startColor.b;
     var r2 = endColor.r, g2 = endColor.g, b2 = endColor.b;
     var out=""
@@ -51,15 +56,21 @@ function createGradient(str, startColor, endColor, modifier) {
     return out;
 }
 function promptCreateGradient() {
-    var str = prompt('Tekst');
-    if (str===null) return;
-    var startColor = prompt('Beginkleur', '#00FFFF');
-    if (startColor===null) return;
-    var endColor = prompt('Eindkleur', 'blue');
-    if (endColor===null) return;
-    var modifier = prompt('Format codes', '&l');
-    if (modifier===null) return;
-    alert("/rename "+createGradient(str, startColor, endColor, modifier));
+    try {
+        var str = prompt('Tekst');
+        if (str===null) return;
+        var startColor = prompt('Beginkleur', '#00FFFF');
+        if (startColor===null) return;
+        startColor = parseColor(startColor);
+        var endColor = prompt('Eindkleur', 'blue');
+        if (endColor===null) return;
+        endColor = parseColor(endColor);
+        var modifier = prompt('Format codes', '&l');
+        if (modifier===null) return;
+        alert("/rename "+createGradient(str, startColor, endColor, modifier));
+    } catch(e) {
+        alert("Error: "+e.message);
+    }
 }
 </script>
 </body>
