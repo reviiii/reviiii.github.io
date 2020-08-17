@@ -24,27 +24,22 @@ function toLelijk(str) {
 function parseColor(color) {
     var div = document.createElement('div');
     div.style.color = color;
-    if (div.style.color==="") throw new Error(`Color ${color} is not a valid css color`)
+    if (div.style.color==="") throw new Error(`${color} is not a valid css color`)
     document.body.appendChild(div);
-    var match = getComputedStyle(div).color.split("(")[1].split(")")[0].split(",").map(Number)
+    var match = getComputedStyle(div).color.split("rgb")[1].split("(")[1].split(")")[0].split(",").map(Number) // matches rgb(r, g, b) and rgba(r, g, b, a)
     div.remove();
-    if (match.length>2) {
-        if (match.length<4) match[3] = 255;
-        var parsedColor = {
-          r: match[0],
-          g: match[1],
-          b: match[2],
-          a: match[3]
-        };
-        return parsedColor;
-    } else {
-        throw new Error(`parseColor: getComputedStyle(div).color could not be parsed`);
-    }
+    if (match.length<4) match[3] = 1; // add alpha if not already present
+    return {
+      r: match[0],
+      g: match[1],
+      b: match[2],
+      a: match[3]
+    };
 }
 function createGradient(str, startColor, endColor, modifier) {
     str=str.split("");
     var l = str.length;
-    if (startColor.a<255||endColor.a<255) throw new Error("Transparent colors are not supported")
+    if (startColor.a<1||endColor.a<1) throw new Error("Transparent colors are not supported")
     var r1 = startColor.r, g1 = startColor.g, b1 = startColor.b;
     var r2 = endColor.r, g2 = endColor.g, b2 = endColor.b;
     var out=""
