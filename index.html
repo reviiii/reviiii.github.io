@@ -24,6 +24,7 @@ function toLelijk(str) {
 function parseColor(color) {
     var div = document.createElement('div');
     div.style.color = color;
+    if (div.style.color==="") throw new Error(`Color ${color} is not a valid css color`)
     document.body.appendChild(div);
     var match = getComputedStyle(div).color.split("(")[1].split(")")[0].split(",").map(Number)
     div.remove();
@@ -37,7 +38,7 @@ function parseColor(color) {
         };
         return parsedColor;
     } else {
-        throw new Error(`Color ${color} could not be parsed.`);
+        throw new Error(`parseColor: getComputedStyle(div).color could not be parsed`);
     }
 }
 function createGradient(str, startColor, endColor, modifier) {
