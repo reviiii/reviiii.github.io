@@ -1,7 +1,7 @@
 @media (max-width: 40em) {
-    html {
-        font-size: 2.5vw;
-    }
+  html {
+    font-size: 2.5vw;
+  }
 }
 body {
   background-color: #fff;
@@ -27,22 +27,17 @@ nav.main {
   color: #000;
   margin: 0.1em 0;
   transition: background-color 0.1s ease-in-out 0s;
-}
-.item:hover {
-    background-color: #bbb;
-}
-.item:focus {
-    background-color: #cba;
-    outline: 2px solid black;
-    outline-offset: 0;
-}
-a.item {
-  text-decoration: none;
-  cursor: pointer;
-}
-button.item {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  padding: 0;
+  padding: 0.2em;
+  box-sizing: border-box;
+}
+.item:hover {
+  background-color: #bbb;
+}
+.item:focus {
+  background-color: #cba;
+  outline: 2px solid black;
+  outline-offset: 0;
 }
