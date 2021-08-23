@@ -102,7 +102,7 @@ function parsePosition(p) {
 function promptRoute() {
   try {
       let pos = parsePosition(prompt("Destination position:",""))
-      alert("Route to "+(pos.x??"-")+", "+(pos.y??"-")+", "+(pos.z??"-")+":\n"+route(warps, pos))
+      alert("Routes to "+(pos.x??"-")+", "+(pos.y??"-")+", "+(pos.z??"-")+":\n"+route(warps, pos))
   } catch(e) {
       alert("Error: "+e.message)
   }
