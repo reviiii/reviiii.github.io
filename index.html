@@ -89,7 +89,7 @@ function route(starts, end, maxRoutes) {
        a.angle=-Math.atan2(end.x-a.x, end.z-a.z)*180/Math.PI
     })
     starts.sort((a, b)=>a.dist-b.dist)
-    return starts.slice(0, maxRoutes??5).map((a,i)=>(i+1)+". /warp "+a.name+" ("+a.x+", "+a.y+", "+a.z+")\n    afstand="+a.dist+" hoek="+a.angle).join("\n")
+    return starts.slice(0, maxRoutes??5).map((a,i)=>(i+1)+". /warp "+a.name+" ("+a.x+", "+a.y+", "+a.z+")\n    afstand="+a.dist+"\n    hoek="+a.angle).join("\n")
 }
 function parsePosition(p) {
     p=p.split(" ").map(a=>Number(a.split(",").join(".")))
@@ -102,7 +102,7 @@ function parsePosition(p) {
 function promptRoute() {
   try {
       let pos = parsePosition(prompt("Destination position:",""))
-      alert("Routes to "+(pos.x??"-")+", "+(pos.y??"-")+", "+(pos.z??"-")+":\n"+route(warps, pos))
+      alert("Routes to position ("+(pos.x??"-")+", "+(pos.y??"-")+", "+(pos.z??"-")+"):\n"+route(warps, pos))
   } catch(e) {
       alert("Error: "+e.message)
   }
